@@ -5,13 +5,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class FuelCalculator {
 
-    private int fuel;
-
-    public FuelCalculator() {
-        this.fuel = 0;
-    }
-
     public static double calculateFuel(double mass) {
-        return (Math.floor(mass / 3) - 2);
+        double fuel = (Math.floor(mass / 3) - 2);
+
+        if (fuel > 2) {
+            calculateFuel(fuel);
+            return fuel;
+        } else {
+            return fuel;
+        }
     }
 }
